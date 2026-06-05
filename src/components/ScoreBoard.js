@@ -154,8 +154,8 @@ const ScoreBoard = () => {
       }
       if (inningNo === 1) {
         setMatch((state) => {
-          const totalFours = batters.map((batter) => batter.four).reduce((prev, next) => prev + next)
-          const totalSixes = batters.map((batter) => batter.four).reduce((prev, next) => prev + next)
+          const totalFours = batters.map((batter) => batter.four).reduce((prev, next) => prev + next, 0)
+          const totalSixes = batters.map((batter) => batter.six).reduce((prev, next) => prev + next, 0)
           return {
             ...state,
             inning1: {
@@ -202,8 +202,8 @@ const ScoreBoard = () => {
         endInningButton.disabled = true
       } else {
         setMatch((state) => {
-          const totalFours = batters.map((batter) => batter.four).reduce((prev, next) => prev + next)
-          const totalSixes = batters.map((batter) => batter.four).reduce((prev, next) => prev + next)
+          const totalFours = batters.map((batter) => batter.four).reduce((prev, next) => prev + next, 0)
+          const totalSixes = batters.map((batter) => batter.six).reduce((prev, next) => prev + next, 0)
           return {
             ...state,
             inning2: {
