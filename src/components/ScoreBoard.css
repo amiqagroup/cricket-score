@@ -1,22 +1,28 @@
 .inning {
-  background: #3f51b5;
+  background: linear-gradient(135deg, #1a237e, #3949ab);
   color: white;
   padding: 0.5rem;
   font-size: 1.2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
 }
 #end-inning {
   height: 100%;
-  padding: 4px;
+  padding: 4px 10px;
   outline: none;
-  border: 1px solid #fff;
-  border-radius: 4px;
+  border: 2px solid #fff;
+  border-radius: 6px;
+  background: transparent;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
 }
 #end-inning:active {
-  color: #fff;
-  background-color: #3f51b5;
+  color: #1a237e;
+  background-color: #fff;
 }
 .score-container {
   margin: 0.5rem;
@@ -35,13 +41,14 @@
   display: none;
 }
 .badge {
-  background: #ffff4d;
-  color: #000000;
+  background: linear-gradient(135deg, #fff8e1, #ffe082);
+  color: #bf360c;
   text-align: center;
-  font-size: 0.75rem;
-  font-weight: 500;
+  font-size: 0.8rem;
+  font-weight: 600;
   padding: 8px;
   margin-bottom: 8px;
+  border-bottom: 2px solid #ff8f00;
 }
 .badge-flex {
   display: flex;
@@ -52,9 +59,14 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 1.05rem;
+  font-size: 1.15rem;
   font-weight: bold;
-  padding: 4px;
+  padding: 8px 10px;
+  background: linear-gradient(135deg, #e8f5e9, #e3f2fd);
+  border-left: 5px solid #2e7d32;
+  border-radius: 0 4px 4px 0;
+  color: #1a237e;
+  margin-bottom: 4px;
 }
 .batting-container {
   display: flex;
@@ -69,7 +81,9 @@
 }
 table thead {
   padding: 8px;
-  background-color: #3f51b517;
+  background: linear-gradient(135deg, #c8e6c9, #b2dfdb);
+  color: #1b5e20;
+  font-weight: 600;
 }
 .batting-container table td {
   padding: 8px 4px;
@@ -77,8 +91,9 @@ table thead {
 .bowler {
   display: flex;
   align-items: center;
-  background-color: #3f51b517;
+  background: linear-gradient(135deg, #e3f2fd, #e8eaf6);
   padding: 8px;
+  border-left: 4px solid #3949ab;
 }
 .react-autosuggest__container {
   padding-left: 4px;
@@ -132,26 +147,34 @@ table thead {
   border-spacing: 8px;
 }
 .score-types-container table .score-types {
-  background: #3f51b517;
+  background: linear-gradient(135deg, #f3e5f5, #e8eaf6);
 }
 .score-types-container table td {
-  border: 1px solid #3f51b5;
+  border: 1px solid #5c6bc0;
+  border-radius: 4px;
 }
 .score-types-button {
   display: block;
   width: 100%;
   height: 100%;
-  padding: 8px;
+  padding: 10px 8px;
   outline: none;
   border: none;
+  background: linear-gradient(135deg, #fafafa, #ede7f6);
+  font-size: 1rem;
+  font-weight: 600;
+  color: #37474f;
+  cursor: pointer;
+  transition: background 0.15s;
 }
 .score-types-button:active {
   color: white;
-  background-color: #3f51b5;
+  background: linear-gradient(135deg, #3949ab, #5c6bc0);
 }
 .score-types-button-noball {
-  color: #000;
-  background-color: #ffff4d;
+  color: #bf360c;
+  background: linear-gradient(135deg, #fff176, #ffca28);
+  font-weight: bold;
 }
 .icon-button {
   padding: 0 4px !important;
@@ -173,13 +196,17 @@ table thead {
   display: flex;
   justify-content: space-between;
   padding: 8px;
-  background: #3f51b517;
+  background: linear-gradient(135deg, #e1f5fe, #e8f5e9);
+  border-left: 4px solid #4caf50;
+  font-size: 0.9rem;
 }
 .recent-over-container {
   margin: 0.8rem 0;
 }
 .recent-over-text {
-  background-color: #3f51b517;
+  background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+  color: #1b5e20;
+  font-weight: 600;
   padding: 8px;
 }
 .recent-over-details table {
@@ -207,15 +234,18 @@ table thead {
 .score-board-innings {
   display: flex;
   justify-content: space-between;
-  padding: 6px 4px;
+  padding: 6px 8px;
   color: #fff;
-  background: #737373;
+  background: linear-gradient(135deg, #1565c0, #1976d2);
   font-size: 0.95rem;
+  font-weight: 500;
 }
 .score-board-text {
   color: #fff;
-  background: #404040;
-  padding: 8px;
+  background: linear-gradient(135deg, #1b5e20, #2e7d32);
+  padding: 10px 8px;
+  font-size: 1rem;
+  letter-spacing: 0.05em;
 }
 .sb-batting {
   display: flex;
@@ -229,6 +259,8 @@ table thead {
 }
 .sb-batting table thead {
   font-size: 0.9rem;
+  background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+  color: #1a237e;
 }
 .sb-batting table tbody {
   font-size: 0.85rem;
@@ -256,6 +288,8 @@ table thead {
 }
 .sb-bowling table thead {
   font-size: 0.9rem;
+  background: linear-gradient(135deg, #fce4ec, #f8bbd0);
+  color: #880e4f;
 }
 .sb-bowling table tbody {
   font-size: 0.85rem;

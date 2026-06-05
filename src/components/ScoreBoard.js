@@ -154,8 +154,8 @@ const ScoreBoard = () => {
       }
       if (inningNo === 1) {
         setMatch((state) => {
-          const totalFours = batters.map((batter) => batter.four).reduce((prev, next) => prev + next)
-          const totalSixes = batters.map((batter) => batter.four).reduce((prev, next) => prev + next)
+          const totalFours = batters.map((batter) => batter.four).reduce((prev, next) => prev + next, 0)
+          const totalSixes = batters.map((batter) => batter.six).reduce((prev, next) => prev + next, 0)
           return {
             ...state,
             inning1: {
@@ -202,8 +202,8 @@ const ScoreBoard = () => {
         endInningButton.disabled = true
       } else {
         setMatch((state) => {
-          const totalFours = batters.map((batter) => batter.four).reduce((prev, next) => prev + next)
-          const totalSixes = batters.map((batter) => batter.four).reduce((prev, next) => prev + next)
+          const totalFours = batters.map((batter) => batter.four).reduce((prev, next) => prev + next, 0)
+          const totalSixes = batters.map((batter) => batter.six).reduce((prev, next) => prev + next, 0)
           return {
             ...state,
             inning2: {
@@ -535,8 +535,8 @@ const ScoreBoard = () => {
       if (run % 2 === 0) {
         setBatter1((state) => {
           const updatedRun = state.run - run
-          const updatedBall = state.ball - 1
-          const updatedSr = updatedRun / updatedBall
+          const updatedBall = isNoBallParam ? state.ball : state.ball - 1
+          const updatedSr = updatedBall === 0 ? 0 : updatedRun / updatedBall
           const sr = Math.round(isNaN(updatedSr) ? 0 : updatedSr * 100 * 100) / 100
           let four = state.four
           if (run === 4) {
@@ -560,8 +560,8 @@ const ScoreBoard = () => {
         switchBatterStrike()
         setBatter2((state) => {
           const updatedRun = state.run - run
-          const updatedBall = state.ball - 1
-          const updatedSr = updatedRun / updatedBall
+          const updatedBall = isNoBallParam ? state.ball : state.ball - 1
+          const updatedSr = updatedBall === 0 ? 0 : updatedRun / updatedBall
           const sr = Math.round(isNaN(updatedSr) ? 0 : updatedSr * 100 * 100) / 100
           let four = state.four
           if (run === 4) {
@@ -585,8 +585,8 @@ const ScoreBoard = () => {
       if (run % 2 === 0) {
         setBatter2((state) => {
           const updatedRun = state.run - run
-          const updatedBall = state.ball - 1
-          const updatedSr = updatedRun / updatedBall
+          const updatedBall = isNoBallParam ? state.ball : state.ball - 1
+          const updatedSr = updatedBall === 0 ? 0 : updatedRun / updatedBall
           const sr = Math.round(isNaN(updatedSr) ? 0 : updatedSr * 100 * 100) / 100
           let four = state.four
           if (run === 4) {
@@ -610,8 +610,8 @@ const ScoreBoard = () => {
         switchBatterStrike()
         setBatter1((state) => {
           const updatedRun = state.run - run
-          const updatedBall = state.ball - 1
-          const updatedSr = updatedRun / updatedBall
+          const updatedBall = isNoBallParam ? state.ball : state.ball - 1
+          const updatedSr = updatedBall === 0 ? 0 : updatedRun / updatedBall
           const sr = Math.round(isNaN(updatedSr) ? 0 : updatedSr * 100 * 100) / 100
           let four = state.four
           if (run === 4) {
@@ -755,8 +755,8 @@ const ScoreBoard = () => {
     if (batter1.onStrike) {
       setBatter1((state) => {
         const updatedRun = state.run + run
-        const updatedBall = state.ball + 1
-        const sr = Math.round((updatedRun / updatedBall) * 100 * 100) / 100
+        const updatedBall = isNoBall ? state.ball : state.ball + 1
+        const sr = updatedBall === 0 ? 0 : Math.round((updatedRun / updatedBall) * 100 * 100) / 100
         let four = state.four
         if (run === 4) {
           four = four + 1
@@ -786,8 +786,8 @@ const ScoreBoard = () => {
     } else {
       setBatter2((state) => {
         const updatedRun = state.run + run
-        const updatedBall = state.ball + 1
-        const sr = Math.round((updatedRun / updatedBall) * 100 * 100) / 100
+        const updatedBall = isNoBall ? state.ball : state.ball + 1
+        const sr = updatedBall === 0 ? 0 : Math.round((updatedRun / updatedBall) * 100 * 100) / 100
         let four = state.four
         if (run === 4) {
           four = four + 1
@@ -805,8 +805,14 @@ const ScoreBoard = () => {
           strikeRate: sr,
         }
       })
-      if ((ballCount === 5 && run % 2 === 0) || (ballCount !== 5 && run % 2 !== 0)) {
-        switchBatterStrike()
+      if (isNoBall) {
+        if (run % 2 !== 0) {
+          switchBatterStrike()
+        }
+      } else {
+        if ((ballCount === 5 && run % 2 === 0) || (ballCount !== 5 && run % 2 !== 0)) {
+          switchBatterStrike()
+        }
       }
     }
   }
