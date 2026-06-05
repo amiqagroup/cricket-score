@@ -1026,7 +1026,7 @@ const ScoreBoard = () => {
   const welcomeContent = (
     <>
       <div></div>
-      <div>Welcome to Gully Cricket Score Board</div>
+      <div>Welcome to Azpeitia Cricket Score Board Powered by Amiqa Group</div>
       <div></div>
     </>
   )
